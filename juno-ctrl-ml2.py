@@ -381,9 +381,9 @@ def install_and_configure_neutron():
     add_to_conf(neutron_plugin_conf, "ml2_type_vxlan", "vni_ranges", "500:999")
     add_to_conf(neutron_plugin_conf, "securitygroup", "firewall_driver", "neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver")
 	
-
+    execute("neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade juno")
+    
     execute("service neutron-server restart", True)
-   
 
 
 def install_and_configure_dashboard():
